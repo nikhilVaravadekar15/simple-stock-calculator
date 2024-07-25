@@ -9,12 +9,7 @@ export default function Home() {
       <div className="flex gap-4 items-center justify-center flex-wrap lg:mb-0 lg:w-full lg:max-w-5xl ">
         {data.map((item: TData, index: number) => {
           return (
-            <Link
-              key={item.title}
-              href={item.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
+            <Link key={item.title} href={item.url} rel="noopener noreferrer">
               <Card key={item.title} className="p-4">
                 <CardHeader>
                   <CardTitle>{item.title}</CardTitle>
