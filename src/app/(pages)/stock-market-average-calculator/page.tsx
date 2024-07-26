@@ -1,31 +1,18 @@
 "use client";
 import {
-  Credenza,
-  CredenzaBody,
-  CredenzaContent,
-  CredenzaDescription,
-  CredenzaHeader,
-  CredenzaTitle,
-  CredenzaTrigger,
-} from "@/components/ui/credenza";
+  TStockAvarageCalculator,
+  TStockMarketAverageCalculatorPage,
+} from "@/types";
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { ZStockAvarageCalculator } from "@/zod";
-import { TStockAvarageCalculator } from "@/types";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage } from "@hookform/error-message";
+import CredenzaPopUp from "@/components/CredenzaPopUp";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-
-type TStockMarketAverageCalculatorPage = {
-  amountInvertedInFirstPurchase: number;
-  amountInvertedInSecondPurchase: number;
-  totalUnits: number;
-  totalAmount: number;
-  averagePrice: number;
-};
 
 export default function StockMarketAverageCalculatorPage() {
   const {
@@ -85,7 +72,7 @@ export default function StockMarketAverageCalculatorPage() {
                 <ErrorMessage errors={errors} name="first_purchase_unit" />
               </span>
             </div>
-            <div className="mb-2 h-28 flex flex-col space-y-1.5 md:h-[72px]">
+            <div className="h-28 flex flex-col space-y-1.5 md:h-[72px]">
               <Label>Price per share</Label>
               <Input
                 type="any"
@@ -141,49 +128,61 @@ export default function StockMarketAverageCalculatorPage() {
             <Button type="submit" className="cursor-pointer">
               Calculate Average
             </Button>
-            <Pop
+            <CredenzaPopUp
               open={open}
               onOpenChange={setOpen}
-              stockMarketAverageCalculatedData={
-                stockMarketAverageCalculatedData
-              }
-            />
+              title="Stock market average calculator"
+            >
+              <div className="pb-16 md:pb-0">
+                <h1 className="font-medium">
+                  The amount invested in the 1st purchase:{" "}
+                  <span className="text-lg font-bold">
+                    {Number(
+                      stockMarketAverageCalculatedData?.amountInvertedInFirstPurchase!.toFixed(
+                        1
+                      )
+                    )}
+                  </span>
+                </h1>
+                <h1 className="font-medium">
+                  The amount invested in the 2nd purchase:{" "}
+                  <span className="text-lg font-bold">
+                    {Number(
+                      stockMarketAverageCalculatedData?.amountInvertedInSecondPurchase!.toFixed(
+                        1
+                      )
+                    )}
+                  </span>
+                </h1>
+                <h1 className="font-medium">
+                  Total units:{" "}
+                  <span className="text-lg font-bold">
+                    {Number(
+                      stockMarketAverageCalculatedData?.totalUnits!.toFixed(1)
+                    )}
+                  </span>
+                </h1>
+                <h1 className="font-medium">
+                  Average Price:{" "}
+                  <span className="text-lg font-bold">
+                    {Number(
+                      stockMarketAverageCalculatedData?.averagePrice!.toFixed(1)
+                    )}
+                  </span>
+                </h1>
+                <h1 className="font-medium">
+                  Total Amount:{" "}
+                  <span className="text-lg font-bold">
+                    {Number(
+                      stockMarketAverageCalculatedData?.totalAmount!.toFixed(1)
+                    )}
+                  </span>
+                </h1>
+              </div>
+            </CredenzaPopUp>
           </div>
         </form>
       </CardContent>
     </Card>
-  );
-}
-
-function Pop({
-  open,
-  onOpenChange,
-  stockMarketAverageCalculatedData,
-}: {
-  open: boolean;
-  onOpenChange: React.Dispatch<React.SetStateAction<boolean>>;
-  stockMarketAverageCalculatedData: TStockMarketAverageCalculatorPage | null;
-}) {
-  return (
-    <Credenza open={open} onOpenChange={onOpenChange}>
-      <CredenzaTrigger asChild>
-        <></>
-      </CredenzaTrigger>
-      <CredenzaContent>
-        <CredenzaHeader>
-          <CredenzaTitle>Credenza</CredenzaTitle>
-          <CredenzaDescription>
-            A responsive modal component for shadcn/ui.
-          </CredenzaDescription>
-        </CredenzaHeader>
-        <CredenzaBody>
-          {stockMarketAverageCalculatedData ? (
-            JSON.stringify(stockMarketAverageCalculatedData, null, 4)
-          ) : (
-            <></>
-          )}
-        </CredenzaBody>
-      </CredenzaContent>
-    </Credenza>
   );
 }
