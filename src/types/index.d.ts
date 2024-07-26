@@ -4,6 +4,9 @@ import { ZStockAvarageCalculator } from "@/zod/index";
 export type TData = {
   title: string;
   url: string;
+  className?: string;
+  icon?: React.JSX.Element;
+  backgroundImageUrl?: string;
 };
 
 export type TStockMarketAverageCalculatorPage = {

@@ -1,24 +1,25 @@
-import Link from "next/link";
-import { Card, CardHeader, CardTitle } from "@/components/ui/card";
-import { TData } from "@/types";
+import React from "react";
 import { data } from "@/data";
+import { TData } from "@/types";
+import { BentoGrid, BentoGridItem } from "@/components/ui/bento-grid";
 
-export default function Home() {
+export default function BentoGridDemo() {
   return (
-    <main className="h-full w-full flex items-center justify-center">
-      <div className="flex gap-4 items-center justify-center flex-wrap lg:mb-0 lg:w-full lg:max-w-5xl ">
-        {data.map((item: TData, index: number) => {
-          return (
-            <Link key={item.title} href={item.url} rel="noopener noreferrer">
-              <Card key={item.title} className="p-4">
-                <CardHeader>
-                  <CardTitle>{item.title}</CardTitle>
-                </CardHeader>
-              </Card>
-            </Link>
-          );
-        })}
-      </div>
-    </main>
+    <BentoGrid className="max-w-4xl mx-auto p-4">
+      {data.map((item: TData, index: number) => (
+        <BentoGridItem
+          key={item.title}
+          title={item.title}
+          icon={item.icon}
+          url={item.url}
+          backgroundImageUrl={item.backgroundImageUrl}
+          className={`border ${
+            index === 0 || index === 3 || index === 4 || index === 10
+              ? "md:col-span-2"
+              : ""
+          }`}
+        />
+      ))}
+    </BentoGrid>
   );
 }
