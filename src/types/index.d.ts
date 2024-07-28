@@ -1,5 +1,6 @@
+import React from "react";
 import { z } from "zod";
-import { ZStockAvarageCalculator } from "@/zod/index";
+import { ZStockAvarageCalculator, ZSipCalculator } from "@/zod/index";
 
 export type TData = {
   title: string;
@@ -7,6 +8,12 @@ export type TData = {
   className?: string;
   icon?: React.JSX.Element;
   backgroundImageUrl?: string;
+};
+
+export type TChartData = {
+  key: string;
+  value: number;
+  fill: string;
 };
 
 export type TStockMarketAverageCalculatorPage = {
@@ -18,3 +25,10 @@ export type TStockMarketAverageCalculatorPage = {
 };
 
 export type TStockAvarageCalculator = z.infer<typeof ZStockAvarageCalculator>;
+
+export type TSipCalculatorPage = {
+  expectedAmount: number;
+  amountInvested: number;
+};
+
+export type TSipCalculator = z.infer<typeof ZSipCalculator>;

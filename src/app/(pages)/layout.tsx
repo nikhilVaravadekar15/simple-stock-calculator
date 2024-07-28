@@ -9,7 +9,7 @@ export default function RootLayout({
 }>) {
   return (
     <div className="h-full w-full flex flex-col items-center justify-center">
-      <div className="w-full md:w-[512px]">
+      <div className="w-fit">
         {children}
         <div className="w-full flex">
           <Link

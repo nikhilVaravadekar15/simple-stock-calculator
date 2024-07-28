@@ -94,3 +94,21 @@ export const data: Array<TData> = [
       "https://images.pexels.com/photos/3283142/pexels-photo-3283142.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
   },
 ];
+
+export const colors: Array<string> = [
+  "#132789",
+  "#E26929",
+  "#0087C8",
+  "#49073F",
+  "#0F9116",
+  "#9CD25F",
+  "#E50D7E",
+  "#32D612",
+  "#DDBD59",
+  "#754B34",
+  "#F0FF50",
+  "#945CFE",
+  "#31E6F9",
+  "#B89DC2",
+  "#CF9B40",
+];
