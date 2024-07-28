@@ -60,7 +60,7 @@ export default function StockMarketAverageCalculatorPage() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="grid w-full items-center gap-4 mb-4">
             <span className="text-sm font-semibold">First Purchase</span>
-            <div className="mb-2 h-28 flex flex-col space-y-1.5 md:h-[72px]">
+            <div className="h-20 flex flex-col space-y-1.5 md:h-[72px]">
               <Label>Units</Label>
               <Input
                 type="any"
@@ -68,11 +68,11 @@ export default function StockMarketAverageCalculatorPage() {
                   required: true,
                 })}
               />
-              <span className="text-red-600">
+              <span className="text-xs text-red-600">
                 <ErrorMessage errors={errors} name="first_purchase_unit" />
               </span>
             </div>
-            <div className="h-28 flex flex-col space-y-1.5 md:h-[72px]">
+            <div className="h-20 flex flex-col space-y-1.5 md:h-[72px]">
               <Label>Price per share</Label>
               <Input
                 type="any"
@@ -80,14 +80,14 @@ export default function StockMarketAverageCalculatorPage() {
                   required: true,
                 })}
               />
-              <span className="text-red-600">
+              <span className="text-xs text-red-600">
                 <ErrorMessage errors={errors} name="first_purchase_price" />
               </span>
             </div>
           </div>
           <div className="grid w-full items-center gap-4 mb-4">
             <span className="text-sm font-semibold">Second Purchase</span>
-            <div className="mb-2 h-28 flex flex-col space-y-1.5 md:h-[72px]">
+            <div className="h-20 flex flex-col space-y-1.5 md:h-[72px]">
               <Label>Units</Label>
               <Input
                 type="any"
@@ -95,11 +95,11 @@ export default function StockMarketAverageCalculatorPage() {
                   required: true,
                 })}
               />
-              <span className="text-red-600">
+              <span className="text-xs text-red-600">
                 <ErrorMessage errors={errors} name="second_purchase_unit" />
               </span>
             </div>
-            <div className="mb-2 h-28 flex flex-col space-y-1.5 md:h-[72px]">
+            <div className="h-20 flex flex-col space-y-1.5 md:h-[72px]">
               <Label>Price per share</Label>
               <Input
                 type="any"
@@ -107,7 +107,7 @@ export default function StockMarketAverageCalculatorPage() {
                   required: true,
                 })}
               />
-              <span className="text-red-600">
+              <span className="text-xs text-red-600">
                 <ErrorMessage errors={errors} name="second_purchase_price" />
               </span>
             </div>
