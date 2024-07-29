@@ -10,12 +10,6 @@ export type TData = {
   backgroundImageUrl?: string;
 };
 
-export type TChartData = {
-  key: string;
-  value: number;
-  fill: string;
-};
-
 export type TStockMarketAverageCalculatorPage = {
   amountInvertedInFirstPurchase: number;
   amountInvertedInSecondPurchase: number;

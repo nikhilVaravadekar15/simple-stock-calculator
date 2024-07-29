@@ -3,16 +3,15 @@
 import * as React from "react";
 import { ZSipCalculator } from "@/zod";
 import { useForm } from "react-hook-form";
-import { getRandomColor } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ErrorMessage } from "@hookform/error-message";
 import PieChartComponent from "@/components/PieChartComponent";
-import { TChartData, TSipCalculator, TSipCalculatorPage } from "@/types";
+import { TSipCalculator, TSipCalculatorPage } from "@/types";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { colors } from "@/data";
+import { data } from "@/data";
 
 export default function SipCalculatorPage() {
   const {
@@ -31,7 +30,7 @@ export default function SipCalculatorPage() {
   });
 
   const [totalGain, setTotalGain] = React.useState<number>(259656);
-  const [chartData, setChartData] = React.useState<Array<TChartData>>([]);
+  const [chartData, seTPieChartData] = React.useState<Array<Array<string>>>([]);
   const [sipCalculatedData, setSipCalculatedData] =
     React.useState<TSipCalculatorPage>({
       amountInvested: 360000,
@@ -58,19 +57,13 @@ export default function SipCalculatorPage() {
   };
 
   React.useEffect(() => {
-    let counter: number = 0;
-    let arr: Array<TChartData> = [];
+    let arr: Array<Array<string>> = [];
     for (const key in sipCalculatedData) {
-      arr.push({
-        key: key,
-        // @ts-ignore
-        value: sipCalculatedData[key],
-        fill: colors[counter],
-      });
-      counter++;
+      // @ts-ignore
+      arr.push([key, sipCalculatedData[key]]);
     }
-
-    setChartData(arr);
+    seTPieChartData(arr);
+    console.log(data);
   }, [sipCalculatedData]);
 
   return (
